@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import API_URL from '../config';
 
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -18,7 +19,7 @@ function Login() {
     if (!form.email || !form.password) return setError('请填写所有字段');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form, {
+      const res = await axios.post(`${API_URL}/api/auth/login`, form, {
         withCredentials: true
       });
       login(res.data.user);

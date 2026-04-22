@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import API_URL from '../config';
 
 function Signup() {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
@@ -24,7 +25,7 @@ function Signup() {
     if (err) return setError(err);
 
     try {
-      await axios.post('http://localhost:5000/api/auth/signup', form, {
+      await axios.post(`${API_URL}/api/auth/signup`, form, {
         withCredentials: true
       });
       navigate('/login');

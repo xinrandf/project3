@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../config';
 
 function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await axios.post('http://localhost:5000/api/auth/logout', {}, { withCredentials: true });
+    await axios.post(`${API_URL}/api/auth/logout`, {}, { withCredentials: true });
     logout();
     navigate('/');
   };
