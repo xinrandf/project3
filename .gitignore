@@ -1,0 +1,7 @@
+# 前端
+shopcart/node_modules
+shopcart/build
+
+# 后端
+server/node_modules
+server/.env
