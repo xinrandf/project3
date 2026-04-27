@@ -16,7 +16,10 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.log(err));
 
 // 路由
-app.use('/api/auth', require('./routes/auth'));
+app.use(cors({ 
+  origin: ['http://localhost:3000', 'https://project3-md1r.onrender.com'], 
+  credentials: true 
+}));
 app.get('/', (req, res) => {
   res.json({ message: 'Server is running!' });
 });
